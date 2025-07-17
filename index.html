@@ -58,12 +58,13 @@
             box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.3);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+            transform: perspective(1000px) rotateX(2deg);
         }
 
         .section-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.5);
+            transform: perspective(1000px) rotateX(0deg) translateY(-10px);
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.6);
         }
 
         .header-bg {
@@ -73,11 +74,13 @@
         .profile-img {
             border: 5px solid rgba(255, 255, 255, 0.2);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s ease;
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+            transform: perspective(1000px) rotateY(5deg);
         }
 
         .profile-img:hover {
-            transform: scale(1.05);
+            transform: perspective(1000px) rotateY(0deg) scale(1.05);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
         }
 
         .btn-download {
@@ -86,8 +89,42 @@
         }
 
         .btn-download:hover {
-            transform: translateY(-3px);
+            transform: translateY(-3px) scale(1.05);
             box-shadow: 0 5px 15px rgba(59, 130, 246, 0.5);
+        }
+
+        /* Arrow Animation */
+        .arrow-container {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+        }
+
+        .arrow {
+            width: 40px;
+            height: 40px;
+            border-right: 4px solid #fff;
+            border-bottom: 4px solid #fff;
+            transform: rotate(45deg);
+            animation: arrowPulse 2s infinite ease-in-out;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+
+        @keyframes arrowPulse {
+            0% {
+                transform: translateY(0) rotate(45deg);
+                opacity: 0.5;
+            }
+            50% {
+                transform: translateY(15px) rotate(45deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(0) rotate(45deg);
+                opacity: 0.5;
+            }
         }
     </style>
 </head>
@@ -116,11 +153,15 @@
         <div class="absolute inset-0 bg-[url('https://source.unsplash.com/1600x900/?technology')] bg-cover bg-center opacity-10"></div>
         <div class="container mx-auto px-4 relative z-10">
             <div class="w-32 h-32 mx-auto rounded-full overflow-hidden mb-6 profile-img fade-in">
-                <img src="https://via.placeholder.com/150" alt="Sahil Ladva Profile" class="w-full h-full object-cover">
+                <!-- Placeholder used due to Google Drive access restrictions. Replace with your photo URL if accessible or host it elsewhere -->
+                <img src="https://drive.google.com/file/d/1c969zsq-oqhVrMWs-VAO5PQ9FTxb_4VQ/view?usp=sharing" alt="Sahil Ladva Profile" class="w-full h-full object-cover">
             </div>
             <h1 class="text-5xl font-bold mb-4 fade-in">Sahil Ladva</h1>
             <p class="text-xl text-blue-100 mb-6 fade-in">Full-Stack Developer — Software Engineer</p>
             <a href="#contact" class="inline-block px-6 py-3 rounded-lg text-white font-semibold btn-download fade-in">Get in Touch</a>
+        </div>
+        <div class="arrow-container">
+            <div class="arrow"></div>
         </div>
     </header>
 
